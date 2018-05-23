@@ -4,30 +4,32 @@ document.addEventListener("DOMContentLoaded", function() {
   const stack = new Stack();
   const cards = document.querySelectorAll(".stack li");
 
+  const cleanCard = (e) => {
+    stack.getCard(e.target).destroy()
+    e.target.classList.remove("in-deck");
+    e.target.classList.add("hidden");
+  }
+
+  const callBackEnd = (action) => {
+    console.log('Je fais un call ajax pour' + action)
+  }
+
   cards.forEach(card => {
     stack.createCard(card);
     card.classList.add("in-deck");
   });
 
-  stack.on("throwout", function(e) {
-    console.log(
-      e.target.innerText || e.target.textContent,
-      "has been thrown out of the stack to the",
-      e.throwDirection,
-      "direction."
-    );
+  stack.on("throwoutleft", function(e) {
+    console.log('je dislike')
+    callBackEnd('dislike')
 
-    e.target.classList.remove("in-deck");
+    cleanCard(e)
   });
 
-  stack.on("throwin", function(e) {
-    console.log(
-      e.target.innerText || e.target.textContent,
-      "has been thrown into the stack from the",
-      e.throwDirection,
-      "direction."
-    );
+  stack.on("throwoutright", function(e) {
+    console.log('je like')
+    callBackEnd('like')
 
-    e.target.classList.add("in-deck");
+    cleanCard(e)
   });
 });

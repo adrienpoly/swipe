@@ -12,6 +12,10 @@ body {
     sans-serif;
 }
 
+.hidden {
+  display: none;
+}
+
 button,
 input,
 code {
@@ -42,7 +46,7 @@ input {
 }
 
 #viewport .stack {
-  width: 200px;
+  width: 400px;
   height: 300px;
   background: #ed5d52;
   position: absolute;
@@ -53,7 +57,7 @@ input {
 }
 
 #viewport li {
-  width: 200px;
+  width: 400px;
   height: 300px;
   list-style: none;
   background: #fff;
@@ -128,4 +132,3 @@ input {
 #source a {
   color: #c7433e;
 }
-
